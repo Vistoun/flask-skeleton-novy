@@ -2,7 +2,7 @@
 Logic for dashboard related routes
 """
 from flask import Blueprint, render_template
-from .forms import LogUserForm, secti,masoform
+from .forms import LogUserForm, secti,masoform, ocForm
 from ..data.database import db
 from ..data.models import LogUser
 blueprint = Blueprint('public', __name__)
@@ -36,3 +36,10 @@ def masof():
     if form.validate_on_submit():
         return render_template('public/masovystup.tmpl',hod1=form.hodnota1.data,hod2=form.hodnota2.data,suma=form.hodnota1.data+form.hodnota2.data)
     return render_template('public/maso.tmpl', form=form)
+
+@blueprint.route('/ocformular', methods=['GET','POST'])
+def ocapp():
+    form = ocForm()
+    if form.validate_on_submit():
+        return str(form.a*form.b)
+    return render_template("public/ocformular.tmpl", form=form)
