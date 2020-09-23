@@ -25,6 +25,8 @@ def import_env():
             if len(var) == 2:
                 os.environ[var[0]] = var[1]
 
+
+
 import_env()
 
 app = create_app(app_config)
