@@ -41,5 +41,11 @@ def masof():
 def ocapp():
     form = ocForm()
     if form.validate_on_submit():
-        return str(form.a*form.b)
+        if form.obrazec.data == "1":
+            from math import pow
+            prom = str(pow(form.a.data,2))
+            return render_template("public/ocvystup.tmpl", prom=prom)
+        if form.obrazec.data == "2":
+            prom = str(form.a.data * form.b.data)
+            return render_template("public/ocvystup.tmpl", prom=prom)
     return render_template("public/ocformular.tmpl", form=form)

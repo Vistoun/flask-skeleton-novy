@@ -47,6 +47,6 @@ class masoform(Form):
 class ocForm(Form):
     a = FloatField("Strana a:", validators=[InputRequired(message="vyzadovano")])
     b = FloatField("Strana b:", validators=[InputRequired(message="vyzadovano")])
-    obrazec = SelectField("Obrazec",choices=[(1,"Ctverec a"),\
-                                            (2,"Obdelnik ab"),\
-                                            (3,"Trojuhelnik abc")], default=1)
+    obrazec = SelectField("Obrazec", choices=[("1","Ctverec a"),\
+                                              ("2", "Obdelnik ab"),\
+                                              ("3","Trojuhelnik abc")], default=1)
