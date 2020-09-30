@@ -59,5 +59,6 @@ def chart():
 @blueprint.route("/vloz_radek")
 def vloz_radek():
     text = "BlaBlaBla"
-    new_student = Stock(firma="AutoCont", zkratka="Nevim")
+    new_student = Stock(firma="AutoCont", grade="sdfdsa")
     Stock.create(new_student)
+    return "OK"
