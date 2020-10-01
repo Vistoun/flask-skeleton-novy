@@ -4,7 +4,7 @@ Logic for dashboard related routes
 from flask import Blueprint, render_template
 from .forms import LogUserForm, secti,masoform, ocForm
 from ..data.database import db
-from ..data.models import LogUser, Stock,
+from ..data.models import LogUser, Stock
 blueprint = Blueprint('public', __name__)
 
 @blueprint.route('/', methods=['GET'])
@@ -59,6 +59,11 @@ def chart():
 @blueprint.route("/vloz_radek")
 def vloz_radek():
     text = "BlaBlaBla"
-    new_student = Stock(firma="AutoCont", grade="sdfdsa")
-    Stock.create(new_student)
+    new_student = Stock(firma="AutoCont",zkratka ="xx", jmenovitaHodnota = 100, posledni_cena=101,grade="sdfdsa" )
+    db.session.add(new_student)
+    db.session.commit()
     return "OK"
+@blueprint.route("/vloz_table")
+def vypis_table():
+    pole = db.session.query(Stock).all()
+    return render_template("public/vypis_tabulky.tmpl", pole=pole)

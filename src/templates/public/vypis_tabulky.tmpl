@@ -1,0 +1,17 @@
+{% from "macros/fields.tmpl" import render_input_field, render_submit %}
+{% extends "shared/layout.tmpl" %}
+
+{% block title %}LIST{% endblock %}
+
+{% block content %}
+
+ <table style="width:100%; border: 1px solid black;">
+    {% for n in pole %}
+        <tr>
+            <td>{{ n.firma }}</td>
+            <td>{{ n.posledni_cena }}</td>
+        </tr>
+    {% endfor %}
+ </table>
+
+{% endblock %}

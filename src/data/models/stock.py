@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import Column, ForeignKey
+from sqlalchemy.sql import func
 from sqlalchemy.types import Boolean, Integer, String, DateTime, Float
 
 from ..database import db
@@ -25,6 +26,5 @@ class Stock(CRUDModel):
         for k, v in kwargs.iteritems():
             setattr(self, k, v)
     @staticmethod
-    def find_by_prijmeni(prijmeni):
-        return db.session.query(LogUser1).filter_by(prijmeni = prijmeni).all()
-
+    def vypis_spolecny_radek():
+        return db.session.query(Stock.firma,func.avg(Stock.posledni_cena).label("Prumerna_cena")).group_by("firma")
